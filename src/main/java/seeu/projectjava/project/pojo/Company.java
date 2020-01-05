@@ -1,9 +1,5 @@
 package seeu.projectjava.project.pojo;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
@@ -13,16 +9,16 @@ public class Company {
     @Column( name = "id" )
     private UUID id;
 
-    @Column( name = "name")
-    private String name;
+    @Column( name = "company_name")
+    private String company_name;
 
     public Company(){
 
     }
 
-    public Company(UUID id, String name) {
+    public Company(UUID id, String company_name) {
         this.id = id;
-        this.name = name;
+        this.company_name = company_name;
     }
 
     public UUID getId() {
@@ -33,11 +29,11 @@ public class Company {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getCompany_name() {
+        return company_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCompany_name(String company_name) {
+        this.company_name = company_name;
     }
 }

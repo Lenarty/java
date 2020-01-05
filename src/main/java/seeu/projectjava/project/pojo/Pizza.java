@@ -1,65 +1,43 @@
 package seeu.projectjava.project.pojo;
-
 import javax.persistence.*;
 import java.util.UUID;
 
-
 @Entity
 @Table( name = "pizza" )
-public class Pizza {
+public class Pizza extends Food {
     @Id
     @Column( name = "id" )
     private UUID id;
 
-    @Column( name = "name" )
-    private String name;
-
-    @Column( name = "price")
-    private Integer price;
-
-    @JoinColumn(name = "companyid" , referencedColumnName = "id")
+    @JoinColumn(name = "food_id")
     @ManyToOne
-    private Company company;
+    private UUID food_id;
 
     public Pizza(){
 
     };
 
-    public Pizza(UUID id, String name, Integer price) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
+    public Pizza(UUID id, UUID company_id, String food_name, Float food_price, String food_description, UUID pizza_id, UUID food_id) {
+        super(id, company_id, food_name, food_price, food_description);
+        this.id = pizza_id;
+        this.food_id = food_id;
     }
 
+    @Override
     public UUID getId() {
         return id;
     }
 
+    @Override
     public void setId(UUID id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public UUID getFood_id() {
+        return food_id;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
+    public void setFood_id(UUID food_id) {
+        this.food_id = food_id;
     }
 }
