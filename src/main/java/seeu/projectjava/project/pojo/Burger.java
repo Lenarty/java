@@ -10,35 +10,16 @@ public class Burger extends Food {
     @Column( name = "id" )
     private UUID id;
 
+    @JoinColumn(name = "food_id" , referencedColumnName = "id")
     @ManyToOne
-    @JoinColumn(name = "food_id")
-    private UUID food_id;
+    private Food food;
 
     public Burger() {
 
     }
 
-    public Burger(UUID id, UUID company_id, String food_name, Float food_price, String food_description, UUID burger_id, UUID food_id) {
-        super(id, company_id, food_name, food_price, food_description);
-        this.id = burger_id;
-        this.food_id = food_id;
-    }
-
-    @Override
-    public UUID getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(UUID id) {
+    public Burger(UUID id, Food food) {
         this.id = id;
-    }
-
-    public UUID getFood_id() {
-        return food_id;
-    }
-
-    public void setFood_id(UUID food_id) {
-        this.food_id = food_id;
+        this.food = food;
     }
 }

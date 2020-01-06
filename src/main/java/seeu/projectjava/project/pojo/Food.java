@@ -11,7 +11,7 @@ public class Food {
 
     @JoinColumn(name = "company_id" , referencedColumnName = "id")
     @ManyToOne
-    private UUID company_id;
+    private Company company;
 
     @Column( name = "food_name")
     private String food_name;
@@ -26,9 +26,9 @@ public class Food {
 
     }
 
-    public Food(UUID id, UUID company_id, String food_name, Float food_price, String food_description) {
+    public Food(UUID id, Company company, String food_name, Float food_price, String food_description) {
         this.id = id;
-        this.company_id = company_id;
+        this.company = company;
         this.food_name = food_name;
         this.food_price = food_price;
         this.food_description = food_description;
@@ -42,12 +42,12 @@ public class Food {
         this.id = id;
     }
 
-    public UUID getCompany_id() {
-        return company_id;
+    public Company getCompany() {
+        return company;
     }
 
-    public void setCompany_id(UUID company_id) {
-        this.company_id = company_id;
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     public String getFood_name() {

@@ -1,4 +1,7 @@
 package seeu.projectjava.project.pojo;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.UUID;
 
@@ -6,6 +9,9 @@ import java.util.UUID;
 @Table( name = "company" )
 public class Company {
     @Id
+    @Type(type = "pg-uuid")
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column( name = "id" )
     private UUID id;
 

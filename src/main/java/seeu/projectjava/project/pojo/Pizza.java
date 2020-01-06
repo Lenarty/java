@@ -9,18 +9,17 @@ public class Pizza extends Food {
     @Column( name = "id" )
     private UUID id;
 
-    @JoinColumn(name = "food_id")
+    @JoinColumn(name = "food_id" , referencedColumnName = "id")
     @ManyToOne
-    private UUID food_id;
+    private Food food;
 
     public Pizza(){
 
     };
 
-    public Pizza(UUID id, UUID company_id, String food_name, Float food_price, String food_description, UUID pizza_id, UUID food_id) {
-        super(id, company_id, food_name, food_price, food_description);
-        this.id = pizza_id;
-        this.food_id = food_id;
+    public Pizza(UUID id, Food food) {
+        this.id = id;
+        this.food = food;
     }
 
     @Override
@@ -33,11 +32,11 @@ public class Pizza extends Food {
         this.id = id;
     }
 
-    public UUID getFood_id() {
-        return food_id;
+    public Food getFood() {
+        return food;
     }
 
-    public void setFood_id(UUID food_id) {
-        this.food_id = food_id;
+    public void setFood(Food food) {
+        this.food = food;
     }
 }
