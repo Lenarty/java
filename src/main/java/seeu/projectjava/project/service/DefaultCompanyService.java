@@ -22,9 +22,10 @@ public class DefaultCompanyService implements CompanyService {
         return companyRepository.findOneById(id);
     }
 
+    //Shajfi save ene delete si i kom bo ( e kie ene AlreadyExistException )
     @Override
     public Company save(Company company) {
-        //Check if this author already exists!
+
         Company newCompany = new Company();
         newCompany.setCompany_name(company.getCompany_name());
         return companyRepository.save(newCompany);
