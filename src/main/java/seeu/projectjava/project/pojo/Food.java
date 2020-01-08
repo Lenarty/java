@@ -23,7 +23,6 @@ public class Food {
     private String food_description;
 
     public Food() {
-
     }
 
     public Food(UUID id, Company company, String food_name, Float food_price, String food_description) {

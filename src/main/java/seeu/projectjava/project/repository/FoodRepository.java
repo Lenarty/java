@@ -1,5 +1,4 @@
 package seeu.projectjava.project.repository;
-
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import seeu.projectjava.project.pojo.Food;

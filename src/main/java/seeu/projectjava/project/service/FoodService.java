@@ -10,6 +10,6 @@ public interface FoodService {
     List<Food> findAll();
     Food findOne(UUID id);
     Food save(Food food) throws AlreadyExistsException;
-    void delete(Food food);
+    void delete(UUID id);
     boolean existById(UUID id);
 }

@@ -1,11 +1,8 @@
 package seeu.projectjava.project.service;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import seeu.projectjava.project.pojo.AlreadyExistsException;
 import seeu.projectjava.project.pojo.Food;
-
 import seeu.projectjava.project.repository.FoodRepository;
-
 import java.util.List;
 import java.util.UUID;
 public class DefaultFoodService implements FoodService{
@@ -39,12 +36,11 @@ public class DefaultFoodService implements FoodService{
     }
 
     @Override
-    public void delete(Food food) {
-        List<Food> foods = foodRepository.findAll();
-        for(Food element: foods){
-            if (element.getId() == food.getId()){
-                foodRepository.delete(food);
-            }
+    public void delete(UUID id) {
+        Food food = foodRepository.findOneById(id);
+        if (food != null)
+        {
+            foodRepository.delete(food);
         }
     }
 

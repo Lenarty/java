@@ -2,7 +2,6 @@ package seeu.projectjava.project.service.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import seeu.projectjava.project.pojo.Sandwich;
 import seeu.projectjava.project.service.*;
 
 @Configuration
