@@ -1,7 +1,9 @@
 package seeu.projectjava.project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import seeu.projectjava.project.pojo.AlreadyExistsException;
 import seeu.projectjava.project.pojo.Burger;
+import seeu.projectjava.project.pojo.Food;
 import seeu.projectjava.project.repository.BurgerRepository;
 
 import java.util.List;
@@ -13,8 +15,8 @@ public class DefaultBurgerService implements BurgerService {
     public BurgerRepository burgerRepository;
 
     @Override
-    public Optional<Burger> findById(UUID id) {
-        return burgerRepository.findById(id);
+    public Burger findOne(UUID id) {
+        return burgerRepository.findOneById(id);
     }
 
     @Override
@@ -24,7 +26,29 @@ public class DefaultBurgerService implements BurgerService {
 
     @Override
     public boolean existsById(UUID id) {
-        if(burgerRepository.existsById(id)) {return true;}
+        if (burgerRepository.existsById(id)) {
+            return true;
+        }
         return false;
+    }
+
+    @Override
+    public void delete(UUID id) {
+        Burger burger = burgerRepository.findOneById(id);
+        if (burger != null) {
+            burgerRepository.delete(burger);
+        }
+    }
+
+    @Override
+    public Burger save(Burger burger) throws AlreadyExistsException {
+        if (!burgerRepository.existsById(burger.getId())) {
+            Burger newBurger = new Burger();
+            newBurger.setId(burger.getId());
+            newBurger.setFood(burger.getFood());
+            return burgerRepository.save(newBurger);
+        } else {
+            throw new AlreadyExistsException();
+        }
     }
 }

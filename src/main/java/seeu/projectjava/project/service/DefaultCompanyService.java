@@ -22,7 +22,6 @@ public class DefaultCompanyService implements CompanyService {
         return companyRepository.findOneById(id);
     }
 
-    //Shajfi save ene delete si i kom bo ( e kie ene AlreadyExistException )
     @Override
     public Company save(Company company) {
 

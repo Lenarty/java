@@ -5,7 +5,7 @@ import java.util.UUID;
 
 @Entity
 @Table( name = "sandwich" )
-public class Sandwich extends Food {
+public class Sandwich {
     @Id
     @Column( name = "id" )
     private UUID id;
@@ -22,12 +22,10 @@ public class Sandwich extends Food {
         this.food = food;
     }
 
-    @Override
     public UUID getId() {
         return id;
     }
 
-    @Override
     public void setId(UUID id) {
         this.id = id;
     }

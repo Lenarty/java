@@ -1,6 +1,8 @@
 package seeu.projectjava.project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import seeu.projectjava.project.pojo.AlreadyExistsException;
+import seeu.projectjava.project.pojo.Burger;
 import seeu.projectjava.project.pojo.Pizza;
 import seeu.projectjava.project.repository.PizzaRepository;
 
@@ -13,8 +15,8 @@ public class DefaultPizzaService implements PizzaService {
     public PizzaRepository pizzaRepository;
 
     @Override
-    public Optional<Pizza> findById(UUID id) {
-        return pizzaRepository.findById(id);
+    public Pizza findOneById(UUID id) {
+        return pizzaRepository.findOneById(id);
     }
 
     @Override
@@ -27,4 +29,25 @@ public class DefaultPizzaService implements PizzaService {
     public List<Pizza> findAll() {
         return pizzaRepository.findAll();
     }
+
+    @Override
+    public void delete(UUID id) {
+        Pizza pizza = pizzaRepository.findOneById(id);
+        if (pizza != null) {
+            pizzaRepository.delete(pizza);
+        }
+    }
+
+    @Override
+    public Pizza save(Pizza pizza) throws AlreadyExistsException {
+        if (!pizzaRepository.existsById(pizza.getId())) {
+            Pizza newPizza = new Pizza();
+            newPizza.setId(pizza.getId());
+            newPizza.setFood(pizza.getFood());
+            return pizzaRepository.save(newPizza);
+        } else {
+            throw new AlreadyExistsException();
+        }
+    }
 }
+

@@ -10,12 +10,18 @@ import java.util.UUID;
 
 @Repository
 public interface BurgerRepository extends CrudRepository<Burger, UUID> {
-    @Override
-    Optional<Burger> findById(UUID uuid);
+
+    Burger findOneById(UUID uuid);
 
     @Override
     List<Burger> findAll();
 
     @Override
     boolean existsById(UUID uuid);
+
+    @Override
+    void delete(Burger burger);
+
+    @Override
+    Burger save(Burger burger);
 }

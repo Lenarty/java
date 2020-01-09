@@ -2,6 +2,8 @@ package seeu.projectjava.project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import seeu.projectjava.project.pojo.AlreadyExistsException;
+import seeu.projectjava.project.pojo.Burger;
 import seeu.projectjava.project.pojo.Sandwich;
 
 import seeu.projectjava.project.repository.SandwichRepository;
@@ -15,8 +17,8 @@ public class DefaultSandwichService implements SandwichService {
     public SandwichRepository sandwichRepository;
 
     @Override
-    public Optional<Sandwich> findById(UUID id) {
-        return sandwichRepository.findById(id);
+    public Sandwich findOneById(UUID id) {
+        return sandwichRepository.findOneById(id);
     }
 
     @Override
@@ -29,4 +31,25 @@ public class DefaultSandwichService implements SandwichService {
     public List<Sandwich> findAll() {
         return sandwichRepository.findAll();
     }
+
+    @Override
+    public void delete(UUID id) {
+        Sandwich sandwich = sandwichRepository.findOneById(id);
+        if (sandwich != null) {
+            sandwichRepository.delete(sandwich);
+        }
+    }
+
+    @Override
+    public Sandwich save(Sandwich sandwich) throws AlreadyExistsException {
+        if (!sandwichRepository.existsById(sandwich.getId())) {
+            Sandwich newSandwich = new Sandwich();
+            newSandwich.setId(sandwich.getId());
+            newSandwich.setFood(sandwich.getFood());
+            return sandwichRepository.save(newSandwich);
+        } else {
+            throw new AlreadyExistsException();
+        }
+    }
 }
+

@@ -45,7 +45,7 @@ public class DefaultFoodService implements FoodService{
     }
 
     @Override
-    public boolean existById(UUID id) {
+    public boolean existsById(UUID id) {
         if (foodRepository.existsById(id)){
             return true;
         }

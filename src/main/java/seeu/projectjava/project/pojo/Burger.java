@@ -1,12 +1,18 @@
 package seeu.projectjava.project.pojo;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
 @Table( name = "burger")
-public class Burger extends Food {
+public class Burger{
     @Id
+    @Type(type = "pg-uuid")
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column( name = "id" )
     private UUID id;
 
@@ -23,12 +29,10 @@ public class Burger extends Food {
         this.food = food;
     }
 
-    @Override
     public UUID getId() {
         return id;
     }
 
-    @Override
     public void setId(UUID id) {
         this.id = id;
     }

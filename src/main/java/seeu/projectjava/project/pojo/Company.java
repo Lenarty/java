@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table( name = "company" )
+@Table( name = "company" , schema = "public")
 public class Company {
     @Id
     @Type(type = "pg-uuid")

@@ -11,5 +11,5 @@ public interface FoodService {
     Food findOne(UUID id);
     Food save(Food food) throws AlreadyExistsException;
     void delete(UUID id);
-    boolean existById(UUID id);
+    boolean existsById(UUID id);
 }
