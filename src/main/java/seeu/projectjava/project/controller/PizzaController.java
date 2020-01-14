@@ -1,10 +1,11 @@
 package seeu.projectjava.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import seeu.projectjava.project.pojo.AlreadyExistsException;
+import seeu.projectjava.project.pojo.Burger;
+import seeu.projectjava.project.pojo.Company;
 import seeu.projectjava.project.pojo.Pizza;
 
 import seeu.projectjava.project.service.PizzaService;
@@ -33,4 +34,15 @@ public class PizzaController {
         public boolean pizzaExists(@PathVariable UUID id){
             return pizzaService.existsById(id);
         }
+
+        @PostMapping("/pizza")
+        public Pizza savePizza(@RequestBody Pizza pizza) throws AlreadyExistsException {
+           return pizzaService.save(pizza);
+        }
+
+        @DeleteMapping("/pizza/{id}")
+        public void deletePizza(@PathVariable UUID id) {
+            pizzaService.delete(id);
+        }
+
 }

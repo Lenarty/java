@@ -6,37 +6,41 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import seeu.projectjava.project.pojo.Burger;
+import seeu.projectjava.project.pojo.Company;
+import seeu.projectjava.project.pojo.Food;
+import seeu.projectjava.project.service.BurgerService;
+import seeu.projectjava.project.service.CompanyService;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
-import seeu.projectjava.project.pojo.Company;
-import seeu.projectjava.project.pojo.Food;
-import seeu.projectjava.project.service.CompanyService;
-
 @RunWith(SpringRunner.class)
-@WebMvcTest(CompanyController.class)
-public class CompanyControllerTest {
+@WebMvcTest(BurgerController.class)
+public class BurgerControllerTest {
     @Autowired
     private MockMvc mvc;
 
     @MockBean
-    private CompanyService companyService;
+    private BurgerService burgerService;
 
     @Test
-    public void getCompanyTest() throws Exception {
-        mvc.perform(get("/companies"))
+    public void getBurgersTest() throws Exception {
+        mvc.perform(get("/burgers"))
                 .andExpect(status().isOk());
     }
     @Test
-    public void postCompanyTest() throws Exception{
+    public void postBurgerTest() throws Exception{
         Company company = new Company(null,"testName");
+        Food food = new Food(null,company,"testName",10.99f,"testDescription");
+        Burger burger = new Burger(null,food);
 
-        mvc.perform(post("/company").contentType(MediaType.APPLICATION_JSON)
-                .content(toJson(company))).andExpect(status().isOk());
+        mvc.perform(post("/burger").contentType(MediaType.APPLICATION_JSON)
+                .content(toJson(burger))).andExpect(status().isOk());
     }
     private String toJson(final Object obj) {
         try {
