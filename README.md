@@ -82,12 +82,57 @@ Get all companies
 
 Save a company
 
-- URL (localhost:8080/company), METHOD = POST, expects JSON body (only company\_name is required)
+- URL (localhost:8080/company), METHOD = POST, expects JSON body (only company_name is required)
 
 Find company by id
 
 - URL (localhost:8080/company/{id}), METHOD = GET
 
+Update Company by id
+
+- URL (localhost:8080/company/{id}), METHOD = PUT, expects JSON body (id must be the same as previous and company_name can be modified)
+
 Delete a company
 
 - URL (localhost:8080/company/{id}), METHOD = DELETE
+
+Get all foods
+
+- URL (localhost:8080/foods), METHOD = GET
+
+Save food
+
+- URL (localhost:8080/food), METHOD = POST, expects JSON body (only food_name is required)
+
+Find food by id
+
+- URL (localhost:8080/food/{id}), METHOD = GET
+
+Update Food by id
+
+- URL (localhost:8080/food/{id}), METHOD = PUT, expects JSON body (id must be the same as previous and food_name can be modified)
+
+Delete a company
+
+- URL (localhost:8080/food/{id}), METHOD = DELETE
+
+
+Get all pizzas (it is the same process for other foods as well)
+
+- URL (localhost:8080/pizzas), METHOD = GET
+
+Save a pizza
+### Before saving pizza firt you have to insert food and than to save the food id on this table
+- URL (localhost:8080/pizza), METHOD = POST, expects JSON body (pizza_name, food_name is required)
+
+Find pizza by id
+
+- URL (localhost:8080/pizza/{id}), METHOD = GET
+
+Check if pizza exists by id
+
+- URL (localhost:8080/pizza/{id}), METHOD = GET
+
+Delete a pizza
+
+- URL (localhost:8080/pizza/{id}), METHOD = DELETE
