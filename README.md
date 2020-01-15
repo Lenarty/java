@@ -96,6 +96,8 @@ Delete a company
 
 - URL (localhost:8080/company/{id}), METHOD = DELETE
 
+### Food Endpoints
+
 Get all foods
 
 - URL (localhost:8080/foods), METHOD = GET
@@ -116,13 +118,14 @@ Delete a company
 
 - URL (localhost:8080/food/{id}), METHOD = DELETE
 
+### Pizza Endpoints
 
 Get all pizzas (it is the same process for other foods as well)
 
 - URL (localhost:8080/pizzas), METHOD = GET
 
 Save a pizza
-### Before saving pizza firt you have to insert food and than to save the food id on this table
+#### Before saving pizza first you have to insert food and than to save the food id on this table
 - URL (localhost:8080/pizza), METHOD = POST, expects JSON body (pizza_name, food_name is required)
 
 Find pizza by id
