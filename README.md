@@ -5,11 +5,11 @@ This project contains the api for thefoodu
 
 ## Table of Contents
 
-1. [Tools](https://github.com/ealili/springboot-rest-api/tree/develop#tools)
-2. [Dependencies](https://github.com/ealili/springboot-rest-api/tree/develop#dependencies)
-3. [Getting Started](https://github.com/ealili/springboot-rest-api/tree/develop#getting-started)
-4. [Database](https://github.com/ealili/springboot-rest-api/tree/develop#database)
-5. [REST Endpoints](https://github.com/ealili/springboot-rest-api/tree/develop#rest-endpoints)
+1. [Tools](#tools)
+1. [Dependencies](#dependencies)
+1. [Getting Started](#getting-started)
+1. [Database](#database)
+1. [REST Endpoints](#rest-endpoints)
 
 ## Tools
 You will need:
@@ -78,16 +78,64 @@ spring.jpa.show-sql=true
 
 Get all companies
 
-- URL (localhost:8080/companies), METHOD = GET
+- URL `localhost:8080/companies`, METHOD = GET
 
 Save a company
 
-- URL (localhost:8080/company), METHOD = POST, expects JSON body (only company\_name is required)
+- URL `localhost:8080/company`, METHOD = POST, expects JSON body (only company_name is required)
 
 Find company by id
 
-- URL (localhost:8080/company/{id}), METHOD = GET
+- URL `localhost:8080/company/{id}`, METHOD = GET
+
+Update Company by id
+
+- URL `localhost:8080/company/{id}`, METHOD = PUT, expects JSON body (id must be the same as previous and company_name can be modified)
 
 Delete a company
 
-- URL (localhost:8080/company/{id}), METHOD = DELETE
+- URL `localhost:8080/company/{id}`, METHOD = DELETE
+
+### Food Endpoints
+
+Get all foods
+
+- URL `localhost:8080/foods`, METHOD = GET
+
+Save food
+
+- URL `localhost:8080/food`, METHOD = POST, expects JSON body (only food_name is required)
+
+Find food by id
+
+- URL `localhost:8080/food/{id}`, METHOD = GET
+
+Update Food by id
+
+- URL `localhost:8080/food/{id}`, METHOD = PUT, expects JSON body (id must be the same as previous and food_name can be modified)
+
+Delete a company
+
+- URL `localhost:8080/food/{id}`, METHOD = DELETE
+
+### Pizza Endpoints
+#### This process is the same for other foods as well
+Get all pizzas 
+
+- URL `localhost:8080/pizzas`, METHOD = GET
+
+Save a pizza
+#### Before saving pizza first you have to insert food and than to save the food id on this table
+- URL `localhost:8080/pizza`, METHOD = POST, expects JSON body (pizza_name, food_name is required)
+
+Find pizza by id
+
+- URL `localhost:8080/pizza/{id}`, METHOD = GET
+
+Check if pizza exists by id
+
+- URL `localhost:8080/pizza/{id}`, METHOD = GET
+
+Delete a pizza
+
+- URL `localhost:8080/pizza/{id}`, METHOD = DELETE
