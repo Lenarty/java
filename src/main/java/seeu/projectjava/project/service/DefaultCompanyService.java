@@ -38,4 +38,12 @@ public class DefaultCompanyService implements CompanyService {
             companyRepository.delete(company);
         }
     }
+
+    @Override
+    public void update(UUID id,Company company) {
+        Company currentCompany = companyRepository.findOneById(id);
+        currentCompany.setId(company.getId());
+        currentCompany.setCompany_name((company.getCompany_name()));
+        companyRepository.save(company);
+    }
 }

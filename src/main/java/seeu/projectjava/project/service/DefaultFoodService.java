@@ -51,4 +51,15 @@ public class DefaultFoodService implements FoodService{
         }
         return  false;
     }
+
+    @Override
+    public void update(UUID id, Food food) {
+        Food currentFood = foodRepository.findOneById(id);
+        currentFood.setId(food.getId());
+        currentFood.setFood_name(food.getFood_name());
+        currentFood.setFood_description(food.getFood_description());
+        currentFood.setFood_price(food.getFood_price());
+        currentFood.setCompany(food.getCompany());
+        foodRepository.save(food);
+    }
 }

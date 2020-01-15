@@ -32,4 +32,9 @@ public class FoodController {
     public void deleteFood(@PathVariable UUID id) {
         foodService.delete(id);
     }
+
+    @PutMapping("/food/{id}")
+    public void updateFood(@PathVariable UUID id,@RequestBody Food food){
+        foodService.update(id,food);
+    }
 }

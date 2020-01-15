@@ -33,4 +33,9 @@ public class CompanyController {
     public void deleteCompany(@PathVariable UUID id) {
         companyService.delete(id);
     }
+
+    @PutMapping("/company/{id}")
+    public void updateCompany(@PathVariable UUID id, @RequestBody Company company){
+        companyService.update(id,company);
+    }
 }

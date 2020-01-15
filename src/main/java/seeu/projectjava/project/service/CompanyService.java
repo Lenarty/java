@@ -9,4 +9,5 @@ public interface CompanyService {
     Company findOne(UUID id);
     Company save(Company company);
     void delete(UUID id);
+    void update(UUID id,Company company);
 }
