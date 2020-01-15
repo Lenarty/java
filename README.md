@@ -56,6 +56,8 @@ If everything works, you should see an Index Page [here](http://127.0.0.1:8080/)
 
 The default ones are:
 
+```
+
 spring.datasource.driverClassName=org.postgresql.Driver
 
 spring.datasource.url=jdbc:postgresql://localhost:5432/thefoodu
@@ -65,6 +67,8 @@ spring.datasource.username=postgres
 spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
 
 spring.jpa.show-sql=true
+
+```
 
 #
 
