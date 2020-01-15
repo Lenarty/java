@@ -41,9 +41,9 @@ public class DefaultCompanyService implements CompanyService {
 
     @Override
     public void update(UUID id,Company company) {
-        Company currentCompany = companyRepository.findOneById(id);
-        currentCompany.setId(company.getId());
-        currentCompany.setCompany_name((company.getCompany_name()));
-        companyRepository.save(company);
+        Company newCompany = new Company();
+        newCompany.setId(id);
+        newCompany.setCompany_name(company.getCompany_name());
+        companyRepository.save(newCompany);
     }
 }
