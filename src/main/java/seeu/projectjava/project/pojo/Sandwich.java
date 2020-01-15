@@ -1,5 +1,4 @@
 package seeu.projectjava.project.pojo;
-
 import javax.persistence.*;
 import java.util.UUID;
 
@@ -11,24 +10,16 @@ public class Sandwich {
     @Column( name = "id" )
     private UUID id;
 
-    @Column( name = "name" )
-    private String name;
-
-    @Column( name = "price")
-    private Integer price;
-
-    @JoinColumn(name = "companyid" , referencedColumnName = "id")
+    @JoinColumn(name = "food_id" , referencedColumnName = "id")
     @ManyToOne
-    private Company company;
+    private Food food;
 
     public Sandwich(){
-
     };
 
-    public Sandwich(UUID id, String name, Integer price) {
+    public Sandwich(UUID id, Food food) {
         this.id = id;
-        this.name = name;
-        this.price = price;
+        this.food = food;
     }
 
     public UUID getId() {
@@ -39,27 +30,11 @@ public class Sandwich {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Food getFood() {
+        return food;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
+    public void setFood(Food food) {
+        this.food = food;
     }
 }
