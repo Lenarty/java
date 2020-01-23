@@ -53,6 +53,7 @@ If everything works, you should see an Index Page [here](http://127.0.0.1:8080/)
 
 1. Create a PostgreSQL database using the thefoodu.sql script provided in the root folder.
 2. Add credentials to /src/main/resources/application.properties
+3. DDL script can be found here: https://github.com/Lenarty/java/blob/master/script.sql
 
 The default ones are:
 
