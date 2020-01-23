@@ -1,33 +1,32 @@
 package seeu.projectjava.project.pojo;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
 @Table( name = "burger")
-public class Burger {
+public class Burger{
     @Id
+    @Type(type = "pg-uuid")
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column( name = "id" )
     private UUID id;
 
-    @Column( name = "name" )
-    private String name;
-
-    @Column( name = "price" )
-    private Integer price;
-
-    @JoinColumn(name = "companyid" , referencedColumnName = "id")
+    @JoinColumn(name = "food_id" , referencedColumnName = "id")
     @ManyToOne
-    private Company company;
+    private Food food;
 
-    public Burger(){
+    public Burger() {
 
-    };
+    }
 
-    public Burger(UUID id, String name, Integer price) {
+    public Burger(UUID id, Food food) {
         this.id = id;
-        this.name = name;
-        this.price = price;
+        this.food = food;
     }
 
     public UUID getId() {
@@ -38,27 +37,11 @@ public class Burger {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Food getFood() {
+        return food;
     }
 
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
+    public void setFood(Food food) {
+        this.food = food;
     }
 }
